@@ -2,9 +2,9 @@ package org.cscie88c.week2
 
 // complete the definition of the Subject case class and companion object
 final case class Subject(
-  id: String, 
-  name: String, 
-  isSTEM: Boolean
+    id: String,
+    name: String,
+    isSTEM: Boolean
 )
 
 object Subject {
@@ -15,7 +15,9 @@ object Subject {
     if (fields.length == 3) {
       new Subject(fields(0), fields(1), fields(2).toBoolean)
     } else {
-      throw new IllegalArgumentException("CSV string must contain exactly 3 fields")
+      throw new IllegalArgumentException(
+        "CSV string must contain exactly 3 fields"
+      )
     }
   }
 

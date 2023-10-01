@@ -6,7 +6,8 @@ import org.cscie88c.testutils.{StandardTest}
 
 class StudentTest extends StandardTest {
   "Student" when {
-    val student = Student("1, Emmy, Conrart, econrart0@gizmodo.com, Male, China")
+    val student =
+      Student("1, Emmy, Conrart, econrart0@gizmodo.com, Male, China")
 
     "instantiated" should {
       "have an id property" in {
@@ -31,21 +32,30 @@ class StudentTest extends StandardTest {
     "instantiated with an invalid CSV string" should {
       "throw an IllegalArgumentException for missing fields" in {
         assertThrows[IllegalArgumentException] {
-          Student("1, Emmy, Conrart, econrart0@gizmodo.com, Male") // Missing country field
+          Student(
+            "1, Emmy, Conrart, econrart0@gizmodo.com, Male"
+          ) // Missing country field
         }
       }
     }
     "studentNamesByCountry" should {
       "return a list of student names for a given country" in {
-      val chinaStudents = Student.studentNamesByCountry("China")
-      val usaStudents = Student.studentNamesByCountry("United States")
+        val chinaStudents = Student.studentNamesByCountry("China")
+        val usaStudents = Student.studentNamesByCountry("United States")
 
-      chinaStudents should contain theSameElementsAs List("Emmy Conrart", "Jesse Chismon", "Jocelyn Blaxlande")
-      usaStudents should contain theSameElementsAs List("Marin Blasoni", "Delmore Scriver")
+        chinaStudents should contain theSameElementsAs List(
+          "Emmy Conrart",
+          "Jesse Chismon",
+          "Jocelyn Blaxlande"
+        )
+        usaStudents should contain theSameElementsAs List(
+          "Marin Blasoni",
+          "Delmore Scriver"
+        )
       }
       "return an empty list when there are no students from the given country" in {
-      val germanyStudents = Student.studentNamesByCountry("Germany")
-      germanyStudents shouldBe empty
+        val germanyStudents = Student.studentNamesByCountry("Germany")
+        germanyStudents shouldBe empty
       }
     }
     "studentTotalsByCountry" should {
@@ -64,4 +74,3 @@ class StudentTest extends StandardTest {
     }
   }
 }
-

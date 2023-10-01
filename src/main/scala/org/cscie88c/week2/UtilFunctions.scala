@@ -6,12 +6,11 @@ object UtilFunctions {
   def maximum(a: Int, b: Int): Int = {
     if (a > b) {
       a
-    }
-    else {
+    } else {
       b
     }
   }
-  
+
   def average(a: Int, b: Int): Double = {
     (a + b) / 2
   }

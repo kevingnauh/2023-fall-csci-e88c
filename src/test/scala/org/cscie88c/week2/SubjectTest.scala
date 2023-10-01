@@ -4,7 +4,6 @@ import org.cscie88c.testutils.{StandardTest}
 
 // write unit tests for Subject below
 
-
 class SubjectTest extends StandardTest {
   "Subject" when {
     val subject = Subject("1, Physics, true")

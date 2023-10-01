@@ -33,6 +33,7 @@ lazy val root = (project in file(".")).
     )
   )
 
+
 // Custom task to zip files for homework submission
 lazy val zipHomework = taskKey[Unit]("zip files for homework submission")
 
