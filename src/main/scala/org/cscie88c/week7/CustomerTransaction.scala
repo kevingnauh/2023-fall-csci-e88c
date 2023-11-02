@@ -10,5 +10,15 @@ final case class CustomerTransaction(
 )
 
 object CustomerTransaction {
-  // add companion object methods below
+  def apply(csvString: String): Option[CustomerTransaction] = {
+    csvString.split(",") match {
+      case Array(customerId, transactionDate, transactionAmount) =>
+        Try(transactionAmount.toDouble).toOption.map(amount => CustomerTransaction(customerId, transactionDate, amount))
+      case _ => None
+    }
+  }
+  def readFromCSVFile(fileName: String): List[CustomerTransaction] = {
+    val lines = Source.fromFile(fileName).getLines().toList
+    lines.flatMap(apply)
+  }
 }
