@@ -14,7 +14,7 @@ lazy val root = (project in file(".")).
       "-unchecked",
       "-language:postfixOps",
       "-language:higherKinds", // HKT required for Monads and other HKT types
-      "-Wunused", // for scalafix
+      // "-Wunused", // for scalafix
     ),
     libraryDependencies ++= Dependencies.core ++ Dependencies.scalaTest,
     assembly / mainClass := Some("org.cscie88c.MainApp"),
