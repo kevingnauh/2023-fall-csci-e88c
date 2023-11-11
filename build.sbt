@@ -39,8 +39,12 @@ lazy val root = (project in file(".")).
     assembly / assemblyJarName := "2023FallScalaBigData.jar",
     assembly / test := {},
     assembly / assemblyMergeStrategy := {
-      case PathList("META-INF", xs @ _*) => MergeStrategy.discard
-      case "application.conf"            => MergeStrategy.concat
+      case PathList("META-INF", xs @ _*) =>
+        xs match {
+          case "MANIFEST.MF" :: Nil => MergeStrategy.discard
+          case _                    => MergeStrategy.concat
+        }
+      case "application.conf" => MergeStrategy.concat
       case x =>
         val oldStrategy = (assembly / assemblyMergeStrategy).value
         oldStrategy(x)
